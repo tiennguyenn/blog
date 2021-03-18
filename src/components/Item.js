@@ -1,8 +1,8 @@
-const Item = ({title, subtitle, user, created_at}) => {
+const Item = ({id, title, subtitle, user, created_at}) => {
   return (
     <>
       <div className="post-preview">
-        <a href="post.html">
+        <a href={`/post/${id}`}>
           <h2 className="post-title">
             {title}
           </h2>

@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import $ from 'jquery'
 
-import Nav from './components/Nav'
-import Header from './components/Header'
+import Navigation from './components/Navigation'
 import Home from './components/Home'
 import Footer from './components/Footer'
 import Post from './components/Post'
+import About from './components/About';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
@@ -45,13 +46,17 @@ function App() {
   }, [])
 
   return (
-    <>
-      <Nav />
-      <Header />
-      <Home />
+    <Router>
+      <Navigation />
+      <Switch>
+        <Route path="/" component={Home} exact></Route>
+        <Route path="/post/:id" component={Post}></Route>
+        <Route path="/about" component={About} exact></Route>
+        <Route path="/contact" component={Home} exact></Route>
+      </Switch>
       <hr />
       <Footer />
-    </>
+    </Router>
   );
 }
 

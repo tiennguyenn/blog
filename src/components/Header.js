@@ -1,19 +1,26 @@
-import homeBg from './../assets/images/home-bg.jpg'
+import { Col, Container, Row } from 'react-bootstrap'
 
-const Header = () => {
+
+const Header = ({bg, heading, subheading, isPost=false, user=false, createdAt=false}) => {
   return (
-    <header className="masthead" style={{backgroundImage: `url(${homeBg})`}}>
+    <header className="masthead" style={{backgroundImage: `url(${bg})`}}>
       <div className="overlay" />
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-8 col-md-10 mx-auto">
-            <div className="site-heading">
-              <h1>Clean Blog</h1>
-              <span className="subheading">A Blog Theme by Start Bootstrap</span>
+      <Container>
+        <Row>
+          <Col lg="8" md="10" className="mx-auto">
+            <div className={isPost ? 'post-heading' : 'site-heading'}>
+              <h1>{heading}</h1>
+              <h2 className="subheading">{subheading}</h2>
+              {
+                user && 
+                <span class="meta">
+                  Posted by <a href="/user">{user}</a> on {createdAt}
+                </span>
+              }
             </div>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </header>
   )
 }
